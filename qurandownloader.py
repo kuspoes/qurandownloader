@@ -1,20 +1,18 @@
 #!/usr/bin/python3
 
-import sys, re, urllib.request, argparse, os
-
+import sys, re, urllib.request, argparse, os, random
 class QuranDownloader(object):
   def __init__(self):
     self.reciterList = {"aJabir" : "http://ia601604.us.archive.org/1/items/Ali__Jaber/",
                    "aHuthayfi": "http://download.quran.islamway.net/quran3/183/",
                    "aMatrood": "http://ia700405.us.archive.org/2/items/TvQuran.com__Al-Mattrod/",
                    "khQahtani": "http://ia801508.us.archive.org/5/items/Khaled_Al-Qahtani/",
-                   "hSnan": "http://ia600208.us.archive.org/11/items/Hamad_Sinan",
+                   "hSnan": "http://ia600208.us.archive.org/11/items/Hamad_Sinan/",
                    "mMinshawi": "http://ia600508.us.archive.org/15/items/Mohamed_Seddik_Al-Menshawi/",
                    "aKhayat": "http://ia600309.us.archive.org/0/items/Abdullah_Khayat/",
                    "mAyyub": "http://ia700301.us.archive.org/15/items/Mohamed_Ayoub/",
                    "aAbdussamad": "http://ia700309.us.archive.org/6/items/Abdul_Basset_Abdul_Samad_Mujawwad/",
                    "aKanakiri" : "http://ia600305.us.archive.org/7/items/Abdul_Hadi_Kanakeri/"}
-
     self.description = "Download Quran recitations by reciter, range, or single sura."
     self.version = "%(prog)s 1.8. Copyright © Abdalla S. Alothman Kuwait 2014"
     self.name = "qurandownloader"
@@ -99,6 +97,14 @@ class QuranDownloader(object):
       print("{} is not an acceptable range format.".format(sRange))
       sys.exit()
   
+  def randSelector(self):
+    step = random.randrange(1, 53)
+    l = list(self.reciterList.keys())
+    random.shuffle(l)
+    reciter = random.choice(l)
+    sura = random.randrange(1, 115, step)
+    return(reciter, int(sura))
+
   def downloadMulti(self, reciter, fromSura=1, toSura=114):
     for fp in list(range(fromSura, toSura + 1)):
       fName = reciter + "-" + str(fp).zfill(3) + ".mp3"
@@ -147,6 +153,7 @@ def main():
     ap = argparse.ArgumentParser(description=d1.description, prog=d1.name)
     ap.add_argument("-l", "--list", action="store_true", default=False, dest="listReciters",
                     help="List available reciters.")
+    ap.add_argument("-R", "--random", action="store_true", dest="rand11", help="Download random sura by a random reciter.")
     ap.add_argument("-v", "--version", action="version", version=d1.version)
     ap.add_argument("-f", "-reciterlist", type=str, dest="rFile",
                     help="Read a list of reciters from a file. The list must be properly formatted.\nEach line beings with a name of a reciter: myReciter, followed by either a ':' or a ',' or a '-' or even a '.' followed by the URL. The URL must be terminated with a '/'. Example Entry: myReciter:http://www.somesite/remoteDir/") 
@@ -160,10 +167,17 @@ def main():
                     help="Download all Quran files")
     ap.add_argument("-g", "--range", type=str, action="append", dest="rrange",
                      help="Fetch a list of suras from a range. Examples: -g1-10, -g 5:9, --range 40,90")
-    ar = ap.parse_args()
 
+    ar = ap.parse_args()
+    
+    if ar.rand11:
+        result = d1.randSelector()
+        d1.downloadSingle(result[0], result[1])
+        sys.exit()
+    
     if ar.rFile:
       d1.updateList(ar.rFile)
+    
     if ar.directory:
       dir1=ar.directory
       d1.setDir(ar.directory)
@@ -171,6 +185,8 @@ def main():
     if ar.listReciters:
       d1.availableReciters()
       sys.exit()
+
+
 
     if not ar.rList:
       print("{}: {}".format(ap.prog, ap.description))
