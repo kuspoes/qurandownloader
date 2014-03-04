@@ -9,38 +9,38 @@ personal reciters (in the reciterList dict object), however the user is free to 
 own list from a file when executing the script.
 
 1. In every request for download an MP3 file, the name code of the reciter must be supplied with:
-<pre>
+<code>
 -r codeName or --reciter codeName
-</pre>
+</code>
 codeName is anything you wish to call your reciter.
 
 2. Multiple reciters can be requested:
-<pre>
+<code>
 qurandownloader --reciter codeName1 --reciter codeName2 -r codeName 3.
-</pre>
+</code>
 If the MP3 recitations exist on the remote server exist, each recitation will be downloaded.
 
 3. There are three ways to select a recitation:
 
 [a]. --all or -a: This will download all 114 MP3 recitations or any that exist.
-<pre>
+<code>
 Example: qurandownloader -r aKanakiri -r mAyyub -r mMinshawi --all (or -a)
- </pre>
+ </code>
 [b]. --range or -g: This will download MP3 recitations with a specific range.
-<pre>
+<code>
 Example: qurandownloader -r aAbdussamad --range 90-114
-</pre>
+</code>
 All Suras from 90 all the way to Sura 114 for the reciter Abdulbassit Abdussamad will be downloaded.
 
 [c]. --singleSura or -s: This will download a single Sura, or many Suras as you may specify.
-<pre>
+<code>
 Example 1: qurandownloader -r aKanakiri -s10
 Example 2: qurandownloader -r aMatrood -s7 -s11 -s 3 -s 8 -s 19 -s18
 (spaces are irrelevant.)
-</pre>
+</code>
 4. There are 2 ways to add your own list of reciters:
 
-First way: With a file
+<H3>First way: With a file</H3>
 
 This is done by supplying an -f argument to qurandownloader pointing to a file that contains a list of
 reciters. To make your own list, you should MAKE SURE that the web server saves the MP3 recitations
@@ -57,19 +57,19 @@ OR
 
 (see qurandownloader --help)
 
-Second way: by updating the script!
+<H3>Second way: by updating the script!</H3>
 
 At the end of the script where you can see:
-<pre>
+<code>
 def main():
   try:
     d1 = QuranDownloader()
     reciter = str()
     dir1 = str()
-</pre>
+</code>
 just make it look this way:
 
-<pre>
+<code>
 def main():
   try:
     d1 = QuranDownloader()
@@ -79,13 +79,29 @@ def main():
 </b> 
     reciter = str()
     dir1 = str()
-</pre>
+</code>
 5. Directories: By default qurandownloader saves the files in a local directory, you can however
 direct the script to save the downloaded files to another director:
-<pre>
+<code>
 Example: qurandownloader -r aKhayat -d /home/Audios/ -s 15 -g 1-3
-</pre>
-6. To list the available reciters, simply do: qurandownloader --list or -l
+</code>
+
+6. There are two ways to download a random sura:
+<code>
+[a]. qurandownloader -R
+</code>
+
+This will download a random sura by a random reciter and exit.
+<code>
+[b]. qurandownloader -r myReciter1 -R
+</code>
+
+This will download a random sura by <i>myReciter</i>. You can specify as many reciters as you want, so
+this is also valid:
+<code>
+qurandownloader -r aKanakiri -r aMatrood -r aHuthayfi -R
+</code>
+7. To list the available reciters, simply do: qurandownloader --list or -l
 
 ---
 Abdalla S. Alothman

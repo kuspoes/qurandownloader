@@ -153,7 +153,7 @@ def main():
     ap = argparse.ArgumentParser(description=d1.description, prog=d1.name)
     ap.add_argument("-l", "--list", action="store_true", default=False, dest="listReciters",
                     help="List available reciters.")
-    ap.add_argument("-R", "--random", action="store_true", dest="rand11", help="Download random sura by a random reciter.")
+    ap.add_argument("-R", "--random", action="store_true", dest="rand11", help="Download random sura by a random reciter by using: qurandownloader.py -R. If you specify a reciter or more with -r, a random sura by that reciter would be downloaded. Example: qurandownloader -r aMatrood -R")
     ap.add_argument("-v", "--version", action="version", version=d1.version)
     ap.add_argument("-f", "-reciterlist", type=str, dest="rFile",
                     help="Read a list of reciters from a file. The list must be properly formatted.\nEach line beings with a name of a reciter: myReciter, followed by either a ':' or a ',' or a '-' or even a '.' followed by the URL. The URL must be terminated with a '/'. Example Entry: myReciter:http://www.somesite/remoteDir/") 
@@ -171,8 +171,13 @@ def main():
     ar = ap.parse_args()
     
     if ar.rand11:
-      result = d1.randSelector()
-      d1.downloadSingle(result[0], result[1])
+      if not ar.rList:
+        result = d1.randSelector()
+        d1.downloadSingle(result[0], result[1])
+      else:
+        for r in ar.rList:
+          result = d1.randSelector()
+          d1.downloadSingle(r, result[1])
       sys.exit()
     
     if ar.rFile:
