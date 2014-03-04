@@ -18,7 +18,6 @@ preName is anything you wish to call your reciter.
 <pre>
 qurandownloader --reciter preName1 --reciter preName2 -r preName 3.
 </pre>
-<br />
 If the MP3 recitations exist on the remote server exist, each recitation will be downloaded.
 
 3. There are three ways to select a recitation:
@@ -36,9 +35,7 @@ All Suras from 90 all the way to Sura 114 for the reciter Abdulbassit Abdussamad
 [c]. --singleSura or -s: This will download a single Sura, or many Suras as you may specify.
 <pre>
 Example 1: qurandownloader -r aKanakiri -s10
-<br />
 Example 2: qurandownloader -r aMatrood -s7 -s11 -s 3 -s 8 -s 19 -s18
-<br />
 (spaces are irrelevant.)
 </pre>
 4. There are 2 ways to add your own list of reciters:
@@ -57,7 +54,6 @@ then, you're ready. A file, then, should be prepared in the following format:
 <pre>name_of_reciter:http://some.host.com/somewhere/</pre>
 OR
 <pre>name_of_reciter2.http://another.host.net/some/remote/directory/</pre>
-
 (see qurandownloader --help)
 
 <b>Second way: by updating the script!</b>
@@ -71,7 +67,6 @@ def main():
     dir1 = str()
 </pre>
 just make it look this way:
-
 <pre>
 def main():
   try:
@@ -83,7 +78,6 @@ def main():
     reciter = str()
     dir1 = str()
 </pre>
-
 5. Directories: By default qurandownloader saves the files in a local directory, you can however
 direct the script to save the downloaded files to another director:
 <pre>
@@ -102,7 +96,6 @@ this is also valid:
 <pre>
 qurandownloader -r aKanakiri -r aMatrood -r aHuthayfi -R
 </pre>
-<br />
 7. To list the available reciters, simply do: qurandownloader --list or -l
 
 ---
