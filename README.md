@@ -12,7 +12,6 @@ own list from a file when executing the script.
 <pre>
 -r preName or --reciter preName
 </pre>
-<br />
 preName is anything you wish to call your reciter.
 
 2. Multiple reciters can be requested:
@@ -28,12 +27,10 @@ If the MP3 recitations exist on the remote server exist, each recitation will be
 <pre>
 Example: qurandownloader -r aKanakiri -r mAyyub -r mMinshawi --all (or -a)
  </pre>
- <br />
 [b]. --range or -g: This will download MP3 recitations with a specific range.
 <pre>
 Example: qurandownloader -r aAbdussamad --range 90-114
 </pre>
-<br />
 All Suras from 90 all the way to Sura 114 for the reciter Abdulbassit Abdussamad will be downloaded.
 
 [c]. --singleSura or -s: This will download a single Sura, or many Suras as you may specify.
@@ -44,7 +41,6 @@ Example 2: qurandownloader -r aMatrood -s7 -s11 -s 3 -s 8 -s 19 -s18
 <br />
 (spaces are irrelevant.)
 </pre>
-<br />
 4. There are 2 ways to add your own list of reciters:
 
 <b>First way: With a file</b>
@@ -93,17 +89,14 @@ direct the script to save the downloaded files to another director:
 <pre>
 Example: qurandownloader -r aKhayat -d /home/Audios/ -s 15 -g 1-3
 </pre>
-<br />
 6. There are two ways to download a random sura:
 <pre>
 [a]. qurandownloader -R
 </pre>
-<br />
 This will download a random sura by a random reciter and exit.
 <pre>
 [b]. qurandownloader -r myReciter1 -R
 </pre>
-<br />
 This will download a random sura by <i>myReciter</i>. You can specify as many reciters as you want, so
 this is also valid:
 <pre>
