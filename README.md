@@ -8,15 +8,15 @@ This is a tiny utility to download MP3 quran recitations from web sites. I have 
 personal reciters (in the reciterList dict object), however the user is free to add his or her
 own list from a file when executing the script.
 
-1. In every request for download an MP3 file, the name pre of the reciter must be supplied with:
+1. In every request for download an MP3 file, the name of the reciter must be supplied with:
 <pre>
--r preName or --reciter preName
+-r Name or --reciter Name
 </pre>
-preName is anything you wish to call your reciter.
+<code>Name</code> is anything you wish to call your reciter.
 
 2. Multiple reciters can be requested:
 <pre>
-qurandownloader --reciter preName1 --reciter preName2 -r preName 3.
+qurandownloader --reciter Name1 --reciter Name2 -r Name 3.
 </pre>
 If the MP3 recitations exist on the remote server exist, each recitation will be downloaded.
 
@@ -53,7 +53,7 @@ then, you're ready. A file, then, should be prepared in the following format:
 
 <pre>name_of_reciter:http://some.host.com/somewhere/</pre>
 OR
-<pre>name_of_reciter2.http://another.host.net/some/remote/directory/</pre>
+<pre>name_of_reciter2 : http://another.host.net/some/remote/directory/</pre>
 (see qurandownloader --help)
 
 <b>Second way: by updating the script!</b>
