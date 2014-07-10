@@ -12,7 +12,9 @@ class QuranDownloader(object):
                         "aKhayat": "http://ia600309.us.archive.org/0/items/Abdullah_Khayat/",
                         "mAyyub": "http://ia700301.us.archive.org/15/items/Mohamed_Ayoub/",
                         "aAbdussamad": "http://ia700309.us.archive.org/6/items/Abdul_Basset_Abdul_Samad_Mujawwad/",
-                        "aKanakiri" : "http://ia600305.us.archive.org/7/items/Abdul_Hadi_Kanakeri/"}
+                        "aKanakiri" : "http://ia600305.us.archive.org/7/items/Abdul_Hadi_Kanakeri/",
+                        "Sudais" : "https://ia600402.us.archive.org/24/items/Al-Sudais/"
+                        "Ghamdi" : "https://ia600509.us.archive.org/21/items/SaadAl-ghamdi"}
     self.description = "Download Quran recitations by reciter, range, or single sura."
     self.version = "%(prog)s 1.8. Copyright © Abdalla S. Alothman Kuwait 2014"
     self.name = "qurandownloader"
